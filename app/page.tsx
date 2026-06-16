@@ -9,19 +9,14 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import {
   ArrowUpRight,
   Bean,
-  CalendarDays,
   ChevronDown,
   ChevronRight,
-  Clock3,
   Coffee,
   Globe,
-  MapPinned,
   Menu,
   MoonStar,
-  Phone,
   Play,
   Quote,
-  Send,
   Sparkles,
   Star,
   SunMedium,
@@ -41,77 +36,137 @@ type MenuCategory = {
     description: string;
     price: string;
     tone: string;
+    image: string;
   }>;
 };
 
 const menuCategories: MenuCategory[] = [
   {
-    key: "coffee",
-    label: "Coffee",
+    key: "tea-coffee",
+    label: "Tea & Coffee",
     items: [
-      { name: "Velvet Latte", description: "Silky espresso, oat milk, warm vanilla.", price: "$7", tone: "from-amber-300 via-amber-500 to-rose-300" },
-      { name: "House Pour Over", description: "Seasonal single origin with citrus clarity.", price: "$6", tone: "from-stone-200 via-amber-200 to-amber-400" },
-      { name: "Café Crème", description: "Creamy pour with caramel notes and a soft finish.", price: "$8", tone: "from-orange-200 via-amber-300 to-yellow-200" },
+      { name: "Bellam Tea", description: "Traditional hot tea sweetened with premium organic jaggery.", price: "₹15.00", tone: "from-amber-300 via-amber-500 to-rose-300", image: "https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=500&auto=format&fit=crop&q=60" },
+      { name: "Thati Bellam Tea", description: "Aromatic black tea infused with natural palm jaggery.", price: "₹20.00", tone: "from-stone-200 via-amber-200 to-amber-400", image: "https://images.unsplash.com/photo-1563887530-623de4f5a478?w=500&auto=format&fit=crop&q=60" },
+      { name: "Thati Bellam Coffee", description: "Rich brewed coffee sweetened with organic palm jaggery.", price: "₹20.00", tone: "from-orange-200 via-amber-300 to-yellow-200", image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&auto=format&fit=crop&q=60" },
+      { name: "Coffee", description: "Classic hot brewed coffee, strong and aromatic.", price: "₹10.00", tone: "from-stone-300 via-orange-300 to-amber-500", image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=500&auto=format&fit=crop&q=60" },
+      { name: "Boost", description: "Delicious malted chocolate hot energy drink.", price: "₹15.00", tone: "from-rose-200 via-amber-200 to-stone-200", image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=500&auto=format&fit=crop&q=60" },
+      { name: "Horlicks", description: "Warm, nutritious malted milk beverage.", price: "₹15.00", tone: "from-yellow-100 via-amber-200 to-orange-200", image: "https://images.unsplash.com/photo-1536256263959-770b48d82b0a?w=500&auto=format&fit=crop&q=60" },
+      { name: "Lemon Tea", description: "Light and refreshing black tea infused with fresh lemon.", price: "₹15.00", tone: "from-lime-100 via-emerald-200 to-teal-200", image: "https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?w=500&auto=format&fit=crop&q=60" },
+      { name: "Green Tea", description: "Healthy, antioxidant-rich steamed green tea leaves.", price: "₹15.00", tone: "from-emerald-200 via-teal-300 to-cyan-200", image: "https://images.unsplash.com/photo-1627435601361-ec25f5b1d0e5?w=500&auto=format&fit=crop&q=60" },
+      { name: "Ginger Tea", description: "Spiced hot tea brewed with fresh crushed ginger root.", price: "₹15.00", tone: "from-amber-100 via-stone-200 to-emerald-200", image: "https://images.unsplash.com/photo-1599940824399-b87987ceb72a?w=500&auto=format&fit=crop&q=60" },
+      { name: "Badam Milk", description: "Warm milk flavored with ground almonds, saffron, and cardamom.", price: "₹15.00", tone: "from-yellow-200 via-orange-300 to-amber-400", image: "https://images.unsplash.com/photo-1553530666-ba11a7da3888?w=500&auto=format&fit=crop&q=60" },
+      { name: "Black Tea", description: "Bold, unsweetened classic hot black tea brew.", price: "₹15.00", tone: "from-slate-200 via-stone-300 to-amber-200", image: "https://images.unsplash.com/photo-1571934811356-5cc061b6821f?w=500&auto=format&fit=crop&q=60" },
+      { name: "Black Coffee", description: "Strong, dark, freshly brewed hot black coffee.", price: "₹15.00", tone: "from-stone-400 via-zinc-500 to-stone-300", image: "https://images.unsplash.com/photo-1497515114629-f71d768fd07c?w=500&auto=format&fit=crop&q=60" },
+      { name: "Ragi Malt", description: "Healthy, traditional finger millet malt breakfast drink.", price: "₹15.00", tone: "from-orange-200 via-amber-200 to-stone-300", image: "https://images.unsplash.com/photo-1541167760496-1628856ab772?w=500&auto=format&fit=crop&q=60" },
+      { name: "Marathi Tea", description: "Traditional special spiced tea blend from Maharashtra.", price: "₹15.00", tone: "from-rose-200 via-amber-200 to-orange-300", image: "https://images.unsplash.com/photo-1576092768241-dec231879fc3?w=500&auto=format&fit=crop&q=60" },
+      { name: "Cold Coffee", description: "Chilled milk blended with rich espresso and sweetness.", price: "₹80.00", tone: "from-amber-200 via-orange-200 to-rose-200", image: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?w=500&auto=format&fit=crop&q=60" },
+      { name: "Cold Coffee with Ice Cream", description: "Creamy cold coffee topped with a scoop of vanilla ice cream.", price: "₹120.00", tone: "from-amber-300 via-amber-500 to-orange-400", image: "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=500&auto=format&fit=crop&q=60" },
     ],
   },
   {
-    key: "espresso",
-    label: "Espresso",
+    key: "fresh-juices",
+    label: "Fresh Juices",
     items: [
-      { name: "Espresso Tonic", description: "Bright, sparkling, and refreshingly crisp.", price: "$8", tone: "from-sky-200 via-cyan-300 to-emerald-200" },
-      { name: "Double Shot", description: "Bold crema with deep cocoa sweetness.", price: "$5", tone: "from-stone-300 via-orange-300 to-amber-500" },
-      { name: "Cortado", description: "Balanced, warm, and effortlessly refined.", price: "$6", tone: "from-orange-200 via-amber-200 to-stone-300" },
+      { name: "Apple", description: "Freshly pressed sweet red apple juice.", price: "₹49.00", tone: "from-rose-300 via-rose-500 to-amber-200", image: "https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?w=500&auto=format&fit=crop&q=60" },
+      { name: "Mosambi", description: "Tangy and refreshing sweet lime juice.", price: "₹49.00", tone: "from-lime-200 via-emerald-300 to-yellow-200", image: "https://images.unsplash.com/photo-1534353436294-0dbd4bdac845?w=500&auto=format&fit=crop&q=60" },
+      { name: "Orange", description: "Freshly squeezed citrusy orange juice.", price: "₹49.00", tone: "from-orange-300 via-amber-400 to-yellow-300", image: "https://images.unsplash.com/photo-1613478223719-2ab802602423?w=500&auto=format&fit=crop&q=60" },
+      { name: "Sapota", description: "Creamy and rich sweet sapodilla fruit blend.", price: "₹59.00", tone: "from-stone-300 via-amber-400 to-stone-200", image: "https://images.unsplash.com/photo-1541658016709-82535e94bc69?w=500&auto=format&fit=crop&q=60" },
+      { name: "Pineapple", description: "Zesty and sweet tropical pineapple juice.", price: "₹49.00", tone: "from-yellow-200 via-amber-300 to-lime-200", image: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=500&auto=format&fit=crop&q=60" },
+      { name: "Pomegranate", description: "Antioxidant-rich fresh red pomegranate juice.", price: "₹59.00", tone: "from-red-300 via-rose-500 to-orange-300", image: "https://images.unsplash.com/photo-1620219409890-a5482390a3c9?w=500&auto=format&fit=crop&q=60" },
+      { name: "Papaya", description: "Thick and healthy fresh papaya fruit juice.", price: "₹59.00", tone: "from-orange-200 via-amber-300 to-yellow-200", image: "https://images.unsplash.com/photo-1550258987-190a2d41a8ba?w=500&auto=format&fit=crop&q=60" },
+      { name: "ABC with Honey", description: "Nutritious Apple, Beetroot, and Carrot blend sweetened with honey.", price: "₹79.00", tone: "from-rose-400 via-rose-600 to-amber-300", image: "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=500&auto=format&fit=crop&q=60" },
+      { name: "Grape", description: "Chilled sweet black grape juice.", price: "₹49.00", tone: "from-purple-200 via-fuchsia-300 to-rose-200", image: "https://images.unsplash.com/photo-1606771131713-39d73d6dc20d?w=500&auto=format&fit=crop&q=60" },
+      { name: "Banana", description: "Sweet and energizing fresh banana blend.", price: "₹49.00", tone: "from-yellow-100 via-amber-200 to-stone-200", image: "https://images.unsplash.com/photo-1505252585461-04db1ebb846d?w=500&auto=format&fit=crop&q=60" },
+      { name: "Carrot", description: "Healthy, beta-carotene-rich fresh carrot juice.", price: "₹49.00", tone: "from-orange-300 via-amber-400 to-yellow-200", image: "https://images.unsplash.com/photo-1484156818044-c040038b0719?w=500&auto=format&fit=crop&q=60" },
+      { name: "Beetroot", description: "Vibrant, earthy and healthy fresh beetroot juice.", price: "₹59.00", tone: "from-rose-500 via-purple-600 to-pink-300", image: "https://images.unsplash.com/photo-1628556264700-fd824c6ff2eb?w=500&auto=format&fit=crop&q=60" },
+      { name: "Lemon Juice", description: "Classic sweet and tangy freshly squeezed lemonade.", price: "₹29.00", tone: "from-yellow-200 via-lime-300 to-emerald-200", image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=500&auto=format&fit=crop&q=60" },
     ],
   },
   {
-    key: "tea",
-    label: "Tea",
+    key: "mocktails",
+    label: "Mocktails",
     items: [
-      { name: "Jasmine Bloom", description: "Fragrant floral tea with a luminous finish.", price: "$6", tone: "from-lime-100 via-emerald-200 to-teal-200" },
-      { name: "Chai Cloud", description: "Spiced tea with oat foam and honey aroma.", price: "$7", tone: "from-amber-200 via-rose-200 to-orange-300" },
-      { name: "Earl Grey Cream", description: "Bergamot, cream, and honeyed calm.", price: "$6", tone: "from-slate-200 via-stone-300 to-amber-200" },
+      { name: "Virgin Mojito", description: "Classic cooling blend of fresh mint, lime, sugar, and club soda.", price: "₹79.00", tone: "from-lime-200 via-emerald-300 to-teal-200", image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=500&auto=format&fit=crop&q=60" },
+      { name: "Green Apple Mojito", description: "Refreshing mint and lime mojito with a sweet green apple twist.", price: "₹79.00", tone: "from-lime-100 via-emerald-200 to-cyan-200", image: "https://images.unsplash.com/photo-1536935338788-846bb9981813?w=500&auto=format&fit=crop&q=60" },
+      { name: "Ocean Color Mojito", description: "Vibrant blue curaçao paired with fresh mint, lime, and soda.", price: "₹79.00", tone: "from-sky-200 via-blue-400 to-indigo-300", image: "https://images.unsplash.com/photo-1546171753-97d7676e4602?w=500&auto=format&fit=crop&q=60" },
+      { name: "Russian Mojito", description: "Intense and exotic blend of fresh citrus, mint, and secret spices.", price: "₹109.00", tone: "from-amber-200 via-orange-400 to-rose-300", image: "https://images.unsplash.com/photo-1574085733277-851d9d856a3a?w=500&auto=format&fit=crop&q=60" },
+      { name: "Strawberry Mojito", description: "Sweet strawberry puree muddled with fresh mint and lime.", price: "₹79.00", tone: "from-rose-200 via-pink-400 to-rose-400", image: "https://images.unsplash.com/photo-1587223962930-cb7f31384c19?w=500&auto=format&fit=crop&q=60" },
+      { name: "Watermelon Mojito", description: "Refreshing fresh watermelon juice shaken with mint and lime.", price: "₹79.00", tone: "from-rose-300 via-red-400 to-orange-200", image: "https://images.unsplash.com/photo-1563227812-0ea4c22e6cc8?w=500&auto=format&fit=crop&q=60" },
     ],
   },
   {
-    key: "desserts",
-    label: "Desserts",
+    key: "lassi",
+    label: "Lassi",
     items: [
-      { name: "Basque Cheesecake", description: "Burnished top, airy center, berries on the side.", price: "$9", tone: "from-rose-200 via-amber-200 to-stone-200" },
-      { name: "Chocolate Torte", description: "Dark, rich, and finished with sea salt.", price: "$10", tone: "from-stone-300 via-zinc-400 to-amber-300" },
-      { name: "Honey Madeleines", description: "Warm mini cakes with citrus glaze.", price: "$8", tone: "from-yellow-100 via-amber-200 to-orange-200" },
+      { name: "Sweet Lassi", description: "Creamy, chilled yogurt drink traditional sweetened with sugar.", price: "₹69.00", tone: "from-stone-100 via-orange-100 to-amber-200", image: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=500&auto=format&fit=crop&q=60" },
+      { name: "Special Lassi", description: "Premium rich lassi topped with malai and mixed chopped nuts.", price: "₹109.00", tone: "from-amber-200 via-yellow-300 to-orange-300", image: "https://images.unsplash.com/photo-1633945274405-b6c8069047b0?w=500&auto=format&fit=crop&q=60" },
+      { name: "Pista Lassi", description: "Chilled yogurt blend flavored with premium aromatic pistachios.", price: "₹69.00", tone: "from-lime-100 via-emerald-200 to-amber-200", image: "https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=500&auto=format&fit=crop&q=60" },
+      { name: "Butter Milk", description: "Chilled, spiced buttermilk with fresh coriander, ginger, and cumin.", price: "₹29.00", tone: "from-stone-200 via-stone-300 to-emerald-100", image: "https://images.unsplash.com/photo-1626132647523-66f5bf380027?w=500&auto=format&fit=crop&q=60" },
+    ],
+  },
+  {
+    key: "milk-shakes",
+    label: "Milk Shakes",
+    items: [
+      { name: "Chocolate", description: "Creamy, rich milkshake blended with premium chocolate sauce.", price: "₹69.00", tone: "from-stone-500 via-amber-850 to-stone-700", image: "https://images.unsplash.com/photo-1572490088994-d1300aa2fc3c?w=500&auto=format&fit=crop&q=60" },
+      { name: "Vanilla", description: "Classic smooth milkshake flavored with natural vanilla extract.", price: "₹69.00", tone: "from-orange-100 via-yellow-100 to-stone-200", image: "https://images.unsplash.com/photo-1579954115545-a95591f28bfc?w=500&auto=format&fit=crop&q=60" },
+      { name: "Strawberry", description: "Creamy milkshake blended with sweet red strawberry fruit syrup.", price: "₹69.00", tone: "from-rose-200 via-pink-300 to-rose-300", image: "https://images.unsplash.com/photo-1553787499-6f9133860242?w=500&auto=format&fit=crop&q=60" },
+      { name: "Butter Scotch", description: "Indulgent milkshake with rich, buttery caramel butterscotch crunch.", price: "₹69.00", tone: "from-amber-200 via-orange-300 to-yellow-200", image: "https://images.unsplash.com/photo-1600718374662-0483d2b9da44?w=500&auto=format&fit=crop&q=60" },
+      { name: "Blackcurrant", description: "Vibrant milkshake with sweet and tangy blackcurrant fruit flavor.", price: "₹69.00", tone: "from-purple-200 via-fuchsia-300 to-indigo-200", image: "https://images.unsplash.com/photo-1626803775151-61d756612f97?w=500&auto=format&fit=crop&q=60" },
+      { name: "Dry Fruit", description: "Premium milkshake packed with a healthy blend of premium dry fruits.", price: "₹89.00", tone: "from-stone-300 via-amber-200 to-orange-200", image: "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?w=500&auto=format&fit=crop&q=60" },
+    ],
+  },
+  {
+    key: "fruit-milk-shakes",
+    label: "Fruit Milk Shakes",
+    items: [
+      { name: "Banana Milk Shake", description: "Chilled milk blended with fresh, sweet, energy-packed bananas.", price: "₹69.00", tone: "from-yellow-100 via-amber-200 to-stone-200", image: "https://images.unsplash.com/photo-1541658016709-82535e94bc69?w=500&auto=format&fit=crop&q=60" },
+      { name: "Pineapple Milk Shake", description: "Tropical creamy shake blended with fresh pineapple chunks.", price: "₹69.00", tone: "from-yellow-200 via-lime-200 to-amber-300", image: "https://images.unsplash.com/photo-1525385133772-289520883902?w=500&auto=format&fit=crop&q=60" },
+      { name: "Apple Milk Shake", description: "Deliciously smooth milkshake blended with sweet red apples.", price: "₹69.00", tone: "from-rose-200 via-rose-300 to-stone-200", image: "https://images.unsplash.com/photo-1610970881699-44a5587caa9a?w=500&auto=format&fit=crop&q=60" },
+      { name: "Grapes Milk Shake", description: "Sweet and creamy milkshake blended with fresh grapes.", price: "₹69.00", tone: "from-purple-200 via-rose-200 to-stone-200", image: "https://images.unsplash.com/photo-1634863378546-f94d93f773ab?w=500&auto=format&fit=crop&q=60" },
+      { name: "Musk Melon Milk Shake", description: "Cool and refreshing milkshake made with fresh musk melon.", price: "₹69.00", tone: "from-orange-200 via-yellow-200 to-stone-200", image: "https://images.unsplash.com/photo-1623065422902-30a2ad4dc9b0?w=500&auto=format&fit=crop&q=60" },
+      { name: "Papaya Milk Shake", description: "Thick, nutritious milkshake made with sweet ripe papaya.", price: "₹69.00", tone: "from-orange-300 via-amber-300 to-yellow-200", image: "https://images.unsplash.com/photo-1505252585461-04db1ebb846d?w=500&auto=format&fit=crop&q=60" },
     ],
   },
   {
     key: "snacks",
     label: "Snacks",
     items: [
-      { name: "Truffle Toast", description: "Sourdough, herbs, and soft whipped cheese.", price: "$11", tone: "from-amber-100 via-stone-200 to-emerald-200" },
-      { name: "Crispy Brioche", description: "Golden bite with herb butter and tomato jam.", price: "$9", tone: "from-amber-200 via-orange-200 to-rose-200" },
-      { name: "Seasonal Board", description: "Artisan cheese, fruit, and roasted nuts.", price: "$13", tone: "from-stone-200 via-amber-200 to-yellow-200" },
+      { name: "Pizza", description: "Delectable personal-sized pizza topped with cheese and fresh veggies.", price: "₹120.00", tone: "from-orange-300 via-red-400 to-yellow-200", image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&auto=format&fit=crop&q=60" },
+      { name: "Burger", description: "Classic veggie burger with a crispy patty, fresh lettuce, and sauce.", price: "₹80.00", tone: "from-amber-200 via-orange-300 to-stone-300", image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&auto=format&fit=crop&q=60" },
+      { name: "Sandwich", description: "Golden toasted sandwich stuffed with spiced vegetables and cheese.", price: "₹80.00", tone: "from-stone-200 via-amber-200 to-emerald-200", image: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=500&auto=format&fit=crop&q=60" },
+      { name: "French Fries", description: "Crispy, golden-fried potato fingers lightly salted and served with dip.", price: "₹80.00", tone: "from-yellow-200 via-amber-300 to-orange-200", image: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=500&auto=format&fit=crop&q=60" },
+      { name: "Samosa", description: "Crispy pastry pockets filled with spiced potato and pea stuffing.", price: "₹10.00", tone: "from-amber-300 via-orange-400 to-stone-300", image: "https://images.unsplash.com/photo-1601050690597-df056fb4ce78?w=500&auto=format&fit=crop&q=60" },
+      { name: "Bonda", description: "Traditional deep-fried savory potato dumplings in chickpea batter.", price: "₹10.00", tone: "from-amber-200 via-yellow-300 to-stone-200", image: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=500&auto=format&fit=crop&q=60" },
+      { name: "Mirchi Bajji", description: "Spicy green chili fritters fried golden brown, served with onions.", price: "₹10.00", tone: "from-orange-300 via-red-500 to-amber-200", image: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=500&auto=format&fit=crop&q=60" },
     ],
   },
 ];
 
 const drinks = [
   {
-    name: "Midnight Mocha",
-    note: "Cacao depth, velvety foam, caramel drizzle.",
+    name: "Thati Bellam Coffee",
+    note: "Rich brewed coffee sweetened with premium organic palm jaggery.",
     accent: "from-stone-900 via-amber-950 to-rose-950",
+    coverImage: "/images/menu/tea-coffee_thati_bellam_coffee.jpg",
   },
   {
-    name: "Golden Flat White",
-    note: "Silken milk texture with a warm toasted finish.",
+    name: "Cold Coffee with Ice Cream",
+    note: "Chilled coffee topped with a creamy scoop of vanilla ice cream.",
     accent: "from-amber-200 via-orange-300 to-stone-400",
+    coverImage: "/images/menu/tea-coffee_cold_coffee_with_ice_cream.jpg",
   },
   {
-    name: "Sparkling Espresso",
-    note: "Lifted citrus bubbles with a glossy crema crown.",
+    name: "Ocean Color Mojito",
+    note: "Vibrant blue curaçao paired with fresh mint, lime, and soda.",
     accent: "from-sky-200 via-cyan-300 to-emerald-200",
+    coverImage: "/images/menu/mocktails_ocean_color_mojito.jpg"
   },
   {
-    name: "Rose Cardamom Latte",
-    note: "Floral spice, cream, and an elegant slow sip.",
+    name: "Special Lassi",
+    note: "Premium rich yogurt shake topped with malai and mixed chopped nuts.",
     accent: "from-rose-200 via-amber-200 to-orange-300",
+    coverImage: "/images/menu/lassi_special_lassi.jpg",
   },
 ];
 
@@ -149,7 +204,7 @@ const stats = [
   { label: "Cups Served", value: 120000, suffix: "+", icon: Coffee },
   { label: "Happy Customers", value: 42000, suffix: "+", icon: Users },
   { label: "Years of Service", value: 12, suffix: "+", icon: Sparkles },
-  { label: "Menu Items", value: 48, suffix: "+", icon: UtensilsCrossed },
+  { label: "Menu Items", value: 58, suffix: "+", icon: UtensilsCrossed },
 ];
 
 const socials = [
@@ -245,8 +300,6 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState(menuCategories[0].key);
   const [showTop, setShowTop] = useState(false);
-  const [formState, setFormState] = useState({ name: "", phone: "", guests: "2", date: "", time: "" });
-  const [submitted, setSubmitted] = useState(false);
   const [cursor, setCursor] = useState({ x: 0, y: 0 });
 
   const prefersReducedMotion = useReducedMotion();
@@ -324,13 +377,7 @@ export default function Home() {
     window.localStorage.setItem("panda-cafe-theme", nextTheme);
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setSubmitted(true);
-    event.currentTarget.reset();
-    setFormState({ name: "", phone: "", guests: "2", date: "", time: "" });
-    window.setTimeout(() => setSubmitted(false), 2800);
-  };
+
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-[radial-gradient(circle_at_top,rgba(255,237,213,0.96),rgba(251,247,241,1)_30%,rgba(244,235,226,1)_70%,rgba(33,20,11,1)_140%)] text-stone-900 dark:bg-[radial-gradient(circle_at_top,rgba(78,47,29,0.9),rgba(23,14,10,1)_45%,rgba(8,7,6,1)_100%)] dark:text-stone-50">
@@ -378,7 +425,6 @@ export default function Home() {
               ["About", "#about"],
               ["Menu", "#menu"],
               ["Gallery", "#gallery"],
-              ["Reserve", "#reserve"],
             ].map(([label, href]) => (
               <a key={label} href={href} className="rounded-full px-4 py-2 text-sm text-stone-600 transition hover:bg-black/5 hover:text-stone-950 dark:text-stone-300 dark:hover:bg-white/5 dark:hover:text-white">
                 {label}
@@ -403,12 +449,6 @@ export default function Home() {
             >
               <Menu className="h-4 w-4" />
             </button>
-            <a
-              href="#reserve"
-              className="hidden rounded-full bg-linear-to-r from-amber-300 via-orange-400 to-amber-500 px-5 py-3 text-sm font-medium text-stone-950 shadow-lg shadow-amber-800/20 transition hover:-translate-y-0.5 md:inline-flex"
-            >
-              Reserve Table
-            </a>
           </div>
         </div>
 
@@ -426,7 +466,6 @@ export default function Home() {
                   ["Menu", "#menu"],
                   ["Gallery", "#gallery"],
                   ["Reviews", "#reviews"],
-                  ["Reserve", "#reserve"],
                 ].map(([label, href]) => (
                   <a
                     key={label}
@@ -506,15 +545,12 @@ export default function Home() {
             <a href="#menu" className="group inline-flex items-center justify-center gap-2 rounded-full bg-stone-950 px-6 py-4 text-sm font-medium text-white shadow-xl shadow-stone-950/20 transition hover:-translate-y-1 dark:bg-amber-200 dark:text-stone-950">
               View Menu <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
             </a>
-            <a href="#reserve" className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/70 px-6 py-4 text-sm font-medium text-stone-900 shadow-md backdrop-blur transition hover:-translate-y-1 dark:bg-white/10 dark:text-stone-50">
-              Reserve Table <CalendarDays className="h-4 w-4" />
-            </a>
           </motion.div>
 
           <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3">
             {[
               "Single-origin beans",
-              "Seasonal pastry pairings",
+              "Delectable café snacks",
               "Cozy luxury interiors",
             ].map((text, index) => (
               <motion.div
@@ -569,8 +605,8 @@ export default function Home() {
                     <span className="text-xs uppercase tracking-[0.3em] text-stone-500 dark:text-stone-400">Today's blend</span>
                     <Bean className="h-4 w-4 text-amber-500" />
                   </div>
-                  <p className="mt-4 text-2xl font-semibold text-stone-950 dark:text-stone-50">Smoked Hazelnut Latte</p>
-                  <p className="mt-2 text-sm leading-7 text-stone-600 dark:text-stone-300">Rich espresso, nutty sweetness, and a warm velvet finish.</p>
+                  <p className="mt-4 text-2xl font-semibold text-stone-950 dark:text-stone-50">Thati Bellam Coffee</p>
+                  <p className="mt-2 text-sm leading-7 text-stone-600 dark:text-stone-300">Rich brewed coffee sweetened with traditional organic palm jaggery.</p>
                   <div className="mt-5 flex items-center gap-2">
                     {[...Array(5)].map((_, index) => (
                       <Star key={index} className="h-4 w-4 fill-amber-400 text-amber-400" />
@@ -682,9 +718,23 @@ export default function Home() {
                   whileHover={prefersReducedMotion ? {} : { y: -8, rotate: -0.2 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <div className={`h-36 rounded-[1.4rem] bg-linear-to-br ${item.tone} p-px`}>
-                    <div className="flex h-full items-end rounded-[1.35rem] bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.45),transparent_35%),linear-gradient(135deg,rgba(255,255,255,0.35),rgba(0,0,0,0.08))] p-4">
-                      <div className="rounded-full bg-black/20 px-3 py-1 text-xs font-medium uppercase tracking-[0.25em] text-white backdrop-blur-sm">{activeMenu.label}</div>
+                  <div className="relative aspect-video w-full overflow-hidden rounded-[1.4rem] group">
+                    {/* Background gradient border effect */}
+                    <div className={`absolute inset-0 bg-linear-to-br ${item.tone} opacity-80`} />
+                    {/* The menu item image */}
+                    <img
+                      src={`/images/menu/${activeCategory}_${item.name.toLowerCase().replace(/[^a-z0-9]+/g, '_')}.jpg`}
+                      alt={item.name}
+                      loading="lazy"
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    {/* Dark gradient overlay to ensure text/label is legible */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+
+                    <div className="absolute bottom-4 left-4 flex items-end">
+                      <div className="rounded-full bg-black/40 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.25em] text-white backdrop-blur-md border border-white/10">
+                        {activeMenu.label}
+                      </div>
                     </div>
                   </div>
                   <div className="mt-4 flex items-start justify-between gap-4">
@@ -723,20 +773,19 @@ export default function Home() {
                 <SwiperSlide key={drink.name} className="h-auto!">
                   <div className={`relative overflow-hidden rounded-[2.2rem] bg-linear-to-br ${drink.accent} p-5 shadow-[0_25px_100px_rgba(0,0,0,0.14)]`}>
                     <div className="grid gap-6 lg:grid-cols-[1fr_1fr]">
-                      <div className="flex flex-col justify-end rounded-[1.7rem] bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.55),transparent_32%),linear-gradient(135deg,rgba(255,255,255,0.15),rgba(0,0,0,0.15))] p-6 text-stone-950">
-                        <p className="text-xs uppercase tracking-[0.35em] text-stone-800/70">Signature drink</p>
-                        <h3 className="mt-4 text-3xl font-semibold">{drink.name}</h3>
-                        <p className="mt-3 max-w-sm text-sm leading-7 text-stone-800/90">{drink.note}</p>
-                        <div className="mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-white/70 px-4 py-2 text-sm font-medium">
-                          Swipe to explore <ChevronRight className="h-4 w-4" />
+                      <div className="relative flex flex-col justify-end overflow-hidden rounded-[1.7rem] p-6 text-stone-950 h-80">
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.65),transparent_40%),linear-gradient(135deg,rgba(255,255,255,0.2),rgba(0,0,0,0.2))]" />
+                        <div className={`${drink.name === "Thati Bellam Coffee" ? "text-stone-50" : "text-stone-950"} relative z-10`}>
+                          <p className={`text-xs uppercase tracking-[0.35em] font-semibold drop-shadow-md ${drink.name === "Thati Bellam Coffee" ? "text-stone-50" : "text-stone-800/70"}`}>Signature drink</p>
+                          <h3 className="mt-4 text-3xl font-bold drop-shadow-lg">{drink.name}</h3>
+                          <p className="mt-3 max-w-sm text-sm leading-7 font-medium drop-shadow-md">{drink.note}</p>
+                          <div className={`mt-6 inline-flex w-fit items-center gap-2 rounded-full px-4 py-2 text-sm font-bold shadow-lg ${drink.name === "Thati Bellam Coffee" ? "text-stone-50 bg-black/80" : "text-stone-800/70 bg-white/80"}`}>
+                            Swipe to explore <ChevronRight className="h-4 w-4" />
+                          </div>
                         </div>
                       </div>
-                      <div className="grid grid-cols-2 gap-4">
-                        {Array.from({ length: 4 }).map((_, index) => (
-                          <div key={index} className={`relative rounded-3xl bg-white/15 p-4 backdrop-blur ${index % 2 ? "translate-y-4" : ""}`}>
-                            <div className="aspect-square rounded-[1.2rem] bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.85),transparent_25%),linear-gradient(135deg,rgba(255,255,255,0.2),rgba(0,0,0,0.15))]" />
-                          </div>
-                        ))}
+                      <div className="relative flex flex-col justify-end overflow-hidden rounded-[1.7rem] p-6 text-stone-950">
+                        <img src={drink.coverImage} alt={`${drink.name} cover`} className="absolute inset-0 h-full w-full object-cover" />
                       </div>
                     </div>
                   </div>
@@ -747,7 +796,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="gallery" className="px-4 py-16 sm:px-6 lg:px-8">
+      {/* <section id="gallery" className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <SectionHeading
             eyebrow="Gallery"
@@ -780,7 +829,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section id="reviews" className="px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
@@ -843,153 +892,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="reserve" className="px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <SectionHeading
-            eyebrow="Reservation"
-            title="Book a table with a polished floating-label form."
-            description="Clear validation, touch-friendly inputs, and a celebratory success state make booking feel smooth and premium."
-          />
-
-          <div className="mt-10 grid gap-6 lg:grid-cols-[1fr_0.95fr]">
-            <form onSubmit={handleSubmit} className="grid gap-4 rounded-4xl border border-white/10 bg-white/70 p-5 shadow-[0_16px_60px_rgba(122,74,28,0.12)] backdrop-blur-xl dark:bg-white/10">
-              {[
-                ["name", "Name", "text", "Your full name"],
-                ["phone", "Phone", "tel", "+1 555 123 4567"],
-              ].map(([field, label, type, placeholder]) => (
-                <label key={field} className="grid gap-2">
-                  <span className="text-xs uppercase tracking-[0.3em] text-stone-500 dark:text-stone-400">{label}</span>
-                  <input
-                    type={type}
-                    placeholder={placeholder}
-                    required
-                    onChange={(event) => setFormState((current) => ({ ...current, [field]: event.target.value }))}
-                    className="rounded-2xl border border-white/10 bg-white/80 px-4 py-4 text-stone-900 outline-none transition placeholder:text-stone-400 focus:border-amber-300 dark:bg-black/20 dark:text-white"
-                  />
-                </label>
-              ))}
-
-              <div className="grid gap-4 sm:grid-cols-3">
-                <label className="grid gap-2">
-                  <span className="text-xs uppercase tracking-[0.3em] text-stone-500 dark:text-stone-400">Guests</span>
-                  <select
-                    value={formState.guests}
-                    onChange={(event) => setFormState((current) => ({ ...current, guests: event.target.value }))}
-                    className="rounded-2xl border border-white/10 bg-white/80 px-4 py-4 text-stone-900 outline-none dark:bg-black/20 dark:text-white"
-                  >
-                    {[2, 3, 4, 5, 6, 7, 8].map((guest) => (
-                      <option key={guest} value={guest}>
-                        {guest}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-                <label className="grid gap-2 sm:col-span-2">
-                  <span className="text-xs uppercase tracking-[0.3em] text-stone-500 dark:text-stone-400">Date</span>
-                  <input
-                    type="date"
-                    required
-                    onChange={(event) => setFormState((current) => ({ ...current, date: event.target.value }))}
-                    className="rounded-2xl border border-white/10 bg-white/80 px-4 py-4 text-stone-900 outline-none dark:bg-black/20 dark:text-white"
-                  />
-                </label>
-              </div>
-
-              <label className="grid gap-2">
-                <span className="text-xs uppercase tracking-[0.3em] text-stone-500 dark:text-stone-400">Time</span>
-                <input
-                  type="time"
-                  required
-                  onChange={(event) => setFormState((current) => ({ ...current, time: event.target.value }))}
-                  className="rounded-2xl border border-white/10 bg-white/80 px-4 py-4 text-stone-900 outline-none dark:bg-black/20 dark:text-white"
-                />
-              </label>
-
-              <button type="submit" className="group inline-flex items-center justify-center gap-2 rounded-full bg-stone-950 px-6 py-4 text-sm font-medium text-white shadow-xl transition hover:-translate-y-0.5 dark:bg-amber-200 dark:text-stone-950">
-                Reserve now <Send className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-              </button>
-
-              <AnimatePresence>
-                {submitted && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 8 }}
-                    className="rounded-2xl border border-emerald-300/30 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-700 dark:text-emerald-300"
-                  >
-                    Reservation request sent. We’ll confirm shortly.
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </form>
-
-            <div className="grid gap-4">
-              <CardShell>
-                <p className="text-xs uppercase tracking-[0.35em] text-stone-500 dark:text-stone-400">Reserve details</p>
-                <div className="mt-5 grid gap-3 text-sm text-stone-700 dark:text-stone-300">
-                  <div className="flex items-center gap-3"><Clock3 className="h-4 w-4 text-amber-500" /> Daily, 7:00 AM - 10:00 PM</div>
-                  <div className="flex items-center gap-3"><Phone className="h-4 w-4 text-amber-500" /> +1 (555) 024-8600</div>
-                  <div className="flex items-center gap-3"><MapPinned className="h-4 w-4 text-amber-500" /> 18 Honey Lane, Downtown District</div>
-                </div>
-              </CardShell>
-              <CardShell>
-                <p className="text-xs uppercase tracking-[0.35em] text-stone-500 dark:text-stone-400">Sticky mobile action</p>
-                <p className="mt-4 text-base leading-7 text-stone-700 dark:text-stone-300">A bottom CTA remains handy for thumb-friendly booking on smaller screens, while the desktop version keeps the layout airy and refined.</p>
-                <a href="#reserve" className="mt-5 inline-flex items-center gap-2 rounded-full bg-linear-to-r from-amber-300 via-orange-400 to-amber-500 px-5 py-3 text-sm font-medium text-stone-950">
-                  Book from mobile <ArrowUpRight className="h-4 w-4" />
-                </a>
-              </CardShell>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="location" className="px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <SectionHeading
-            eyebrow="Location"
-            title="Find us, plan your visit, and see our hours at a glance."
-            description="Interactive cards and a map-style panel make the location section easy to scan on mobile."
-          />
-
-          <div className="mt-10 grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-            <motion.div
-              className="overflow-hidden rounded-4xl border border-white/10 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.65),transparent_20%),linear-gradient(135deg,#c08a5b,#5c3928_55%,#21120c)] p-5 text-white shadow-[0_16px_60px_rgba(122,74,28,0.16)]"
-              whileInView={{ scale: [0.98, 1] }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <div className="flex h-80 items-end rounded-3xl border border-white/20 bg-[linear-gradient(135deg,rgba(255,255,255,0.2),rgba(0,0,0,0.2))] p-5">
-                <div>
-                  <p className="text-xs uppercase tracking-[0.35em] text-white/70">Map preview</p>
-                  <h3 className="mt-2 text-2xl font-semibold">18 Honey Lane, Downtown District</h3>
-                  <p className="mt-3 max-w-lg text-sm leading-7 text-white/85">Bright corner seating, evening ambient glow, and easy access from the main avenue.</p>
-                </div>
-              </div>
-            </motion.div>
-
-            <div className="grid gap-4">
-              <CardShell>
-                <p className="text-xs uppercase tracking-[0.35em] text-stone-500 dark:text-stone-400">Opening hours</p>
-                <div className="mt-4 space-y-2 text-sm text-stone-700 dark:text-stone-300">
-                  <p>Mon - Fri: 7:00 AM - 9:00 PM</p>
-                  <p>Sat: 8:00 AM - 10:00 PM</p>
-                  <p>Sun: 8:00 AM - 8:00 PM</p>
-                </div>
-              </CardShell>
-              <CardShell>
-                <p className="text-xs uppercase tracking-[0.35em] text-stone-500 dark:text-stone-400">Contact</p>
-                <div className="mt-4 space-y-3 text-sm text-stone-700 dark:text-stone-300">
-                  <p>reservations@pandacafe.studio</p>
-                  <p>+1 (555) 024-8600</p>
-                  <p>Private events available on request</p>
-                </div>
-              </CardShell>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <footer ref={footerRef} className="border-t border-white/10 px-4 pb-28 pt-16 sm:px-6 lg:px-8 md:pb-16">
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
@@ -1028,7 +930,7 @@ export default function Home() {
             </CardShell>
             <CardShell>
               <p className="text-xs uppercase tracking-[0.35em] text-stone-500 dark:text-stone-400">Newsletter</p>
-              <p className="mt-4 text-sm leading-7 text-stone-700 dark:text-stone-300">Receive seasonal menu highlights and reservation updates.</p>
+              <p className="mt-4 text-sm leading-7 text-stone-700 dark:text-stone-300">Receive seasonal menu highlights and updates.</p>
               <div className="mt-4 flex gap-2">
                 <input type="email" placeholder="Email address" className="min-w-0 flex-1 rounded-full border border-white/10 bg-white/80 px-4 py-3 text-sm text-stone-900 outline-none placeholder:text-stone-400 dark:bg-black/20 dark:text-white" />
                 <button type="button" className="inline-flex items-center justify-center rounded-full bg-stone-950 px-4 py-3 text-sm font-medium text-white dark:bg-amber-200 dark:text-stone-950">
@@ -1040,13 +942,10 @@ export default function Home() {
         </div>
       </footer>
 
-      <div className="fixed bottom-4 left-1/2 z-30 w-[min(92vw,32rem)] -translate-x-1/2 md:hidden">
-        <div className="grid grid-cols-2 gap-3 rounded-full border border-white/10 bg-white/80 p-2 shadow-2xl backdrop-blur-xl dark:bg-[#140d09]/90">
-          <a href="#menu" className="inline-flex items-center justify-center gap-2 rounded-full bg-stone-950 px-4 py-3 text-sm font-medium text-white dark:bg-amber-200 dark:text-stone-950">
-            Menu
-          </a>
-          <a href="#reserve" className="inline-flex items-center justify-center gap-2 rounded-full bg-linear-to-r from-amber-300 via-orange-400 to-amber-500 px-4 py-3 text-sm font-medium text-stone-950">
-            Reserve
+      <div className="fixed bottom-4 left-1/2 z-30 w-[min(92vw,20rem)] -translate-x-1/2 md:hidden">
+        <div className="rounded-full border border-white/10 bg-white/80 p-2 shadow-2xl backdrop-blur-xl dark:bg-[#140d09]/90">
+          <a href="#menu" className="flex items-center justify-center rounded-full bg-stone-950 px-4 py-3 text-sm font-medium text-white dark:bg-amber-200 dark:text-stone-950">
+            View Menu
           </a>
         </div>
       </div>
